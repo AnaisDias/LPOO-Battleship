@@ -1,10 +1,10 @@
 package controllers;
 
-import graphics.BattleshipFrame;
-import graphics.FiringView;
-import graphics.PlacementView;
-import graphics.Holding;
-import graphics.WinWindow;
+import graphics.multiplayer.BattleshipFrame;
+import graphics.multiplayer.FiringView;
+import graphics.multiplayer.Holding;
+import graphics.multiplayer.PlacementView;
+import graphics.multiplayer.WinWindow;
 
 import java.util.ArrayList;
 
@@ -16,6 +16,7 @@ public final class WaitControl {
    
 	//current player
     private Player currentPlayer;
+    
     //inative player
     private Player inactivePlayer;
 
@@ -30,16 +31,13 @@ public final class WaitControl {
    //view sequence
     private final ArrayList<Class> viewSequence;
 
-    
     private int sequenceCounter = 0;
 
-    
     private boolean hasWon;
 
-    
-    public WaitControl(BattleshipFrame battleship, Player currentPlayer,
-            Board currentGrid, Player inactivePlayer, Board inactiveGrid) {
-        this.battleship = battleship;
+    public WaitControl(BattleshipFrame battleship, Player currentPlayer, Board currentGrid, Player inactivePlayer, Board inactiveGrid) {
+       
+    	this.battleship = battleship;
 
         this.viewSequence = new ArrayList<Class>();
         this.viewSequence.add(PlacementView.class);
@@ -123,5 +121,11 @@ public final class WaitControl {
         this.inactiveGrid = tempGrid;
         this.inactiveGrid.setPlayerState(false);
     }
+
+
+	public boolean getHasWon() {
+		
+		return hasWon;
+	}
 
 }
